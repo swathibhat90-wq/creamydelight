@@ -796,7 +796,11 @@ section,
 
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--background-color), transparent 8%) 0%,
+    color-mix(in srgb, var(--background-color), transparent 45%) 35%,
+    color-mix(in srgb, var(--background-color), transparent 40%) 65%,
+    color-mix(in srgb, var(--background-color), transparent 5%) 100%);
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -806,6 +810,26 @@ section,
 .hero .container {
   position: relative;
   z-index: 3;
+}
+
+.hero .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--accent-color), transparent 82%);
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 40%);
+  color: var(--contrast-color);
+  padding: 8px 22px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: 18px;
+}
+
+.hero .hero-badge i {
+  color: #ffc107;
+  font-size: 13px;
 }
 
 .hero h2 {
@@ -826,8 +850,58 @@ section,
   border-bottom: 2px solid var(--accent-color);
 }
 
+.hero p.hero-sub {
+  font-size: 17px;
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+}
+
+.hero .hero-buttons {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero .hero-buttons a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.hero .btn-hero-primary {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--accent-color), transparent 55%);
+}
+
+.hero .btn-hero-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--accent-color), transparent 40%);
+  color: var(--contrast-color);
+}
+
+.hero .btn-hero-secondary {
+  background: color-mix(in srgb, var(--contrast-color), transparent 88%);
+  border: 1px solid color-mix(in srgb, var(--contrast-color), transparent 55%);
+  color: var(--contrast-color);
+  backdrop-filter: blur(4px);
+}
+
+.hero .btn-hero-secondary:hover {
+  background: color-mix(in srgb, var(--contrast-color), transparent 72%);
+  transform: translateY(-3px);
+  color: var(--contrast-color);
+}
+
 .hero .social-links {
-  margin-top: 30px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -2115,6 +2189,92 @@ section,
 
 .portfolio .portfolio-card:hover .portfolio-image-container .portfolio-overlay {
   opacity: 1;
+}
+
+.portfolio .portfolio-item.pagination-hidden {
+  display: none !important;
+}
+
+.portfolio .portfolio-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.portfolio .portfolio-pagination.pagination-hidden {
+  display: none;
+}
+
+.portfolio .pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.portfolio .pagination-pages li {
+  min-width: 38px;
+  height: 38px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--default-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.portfolio .pagination-pages li:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  color: var(--accent-color);
+}
+
+.portfolio .pagination-pages li.pagination-active {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.portfolio .pagination-pages li.pagination-ellipsis {
+  cursor: default;
+  color: color-mix(in srgb, var(--default-color), transparent 55%);
+}
+
+.portfolio .pagination-pages li.pagination-ellipsis:hover {
+  background: none;
+  color: color-mix(in srgb, var(--default-color), transparent 55%);
+}
+
+.portfolio .pagination-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  background: transparent;
+  color: var(--default-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.portfolio .pagination-btn:hover:not(:disabled) {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.portfolio .pagination-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .portfolio .portfolio-bottom {
